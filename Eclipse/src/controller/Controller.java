@@ -71,11 +71,14 @@ public class Controller {
 		case CP_FILL:
 			for(int row = 0; row < n; row++)
 				for(int col = 0; col < n; col++)
-					model.fill(row, col);
-			if(flag == 1)
-				handleEvent(ButtonSourceType.CP_ALL);
-			else
-				handleEvent(ButtonSourceType.CP_CLEAR);
+					if(model.fill(row, col)){
+						if(flag == 1)
+							handleEvent(ButtonSourceType.CP_ALL);
+						else
+							handleEvent(ButtonSourceType.CP_CLEAR);
+						return;
+					}
+			
 			break;
 		}
 	}

@@ -118,9 +118,9 @@ public class Model {
 		return count;
 	}
 	
-	public void fill(int row, int col){
+	public boolean fill(int row, int col){
 		int[] availability = this.getCPAvailable(row, col);
-		if(availability == null) return;
+		if(availability == null) return false;
 		
 		int count = 0, index = 0;
 		for(int i = 0; i < n; i++){
@@ -129,6 +129,10 @@ public class Model {
 				index = i;
 			}
 		}
-		if(count == 1) set(row, col, index + 1);
+		if(count == 1){
+			set(row, col, index + 1);
+			return true;
+		}
+		else return false;
 	}
 }

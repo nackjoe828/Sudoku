@@ -93,7 +93,10 @@ class GridPanel extends JPanel{
 		}
 		else{
 			buttons[row * n + col].setText("" + val);
-			buttons[row * n + col].setForeground(Color.GREEN);
+			if(val == 1)
+				buttons[row * n + col].setForeground(Color.RED);
+			else
+				buttons[row * n + col].setForeground(Color.GREEN);
 		}
 	}
 }
