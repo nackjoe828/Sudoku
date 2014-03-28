@@ -46,16 +46,16 @@ class GridPanel extends JPanel{
 		buttons[row * n + col].setOpaque(false);
 		
 		for(int i = 0; i < n; i++)
-			buttons[row * n + i].setBackground(Color.YELLOW);
+			buttons[row * n + i].setBackground(Color.LIGHT_GRAY);
 		
 		for(int i = 0; i < n; i++)
-			buttons[i * n + col].setBackground(Color.YELLOW);
+			buttons[i * n + col].setBackground(Color.LIGHT_GRAY);
 		
 		int nsqrt = (int)Math.sqrt(n);
 		while(row % nsqrt != 0) row--;
 		while(col % nsqrt != 0) col--;
 		for(int i = 0; i < n; i++){
-			buttons[row * n + col].setBackground(Color.YELLOW);
+			buttons[row * n + col].setBackground(Color.LIGHT_GRAY);
 			col++;
 			if(col % nsqrt == 0){
 				col -= nsqrt;
