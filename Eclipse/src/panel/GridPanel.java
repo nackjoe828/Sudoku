@@ -39,6 +39,7 @@ class GridPanel extends JPanel{
 	
 	public void updateGrid(int row, int col, int val){
 		buttons[row * n + col].setText("" + val);
+		buttons[row * n + col].setForeground(Color.BLACK);
 	}
 	
 	public void focus(int row, int col){

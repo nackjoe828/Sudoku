@@ -74,7 +74,7 @@ public class MainPanel extends JFrame{
 	}
 	
 	public void showMessage(int[] availability){
-		
+		message.showAvailability(availability);
 	}
 	
 	public void focus(int row, int col){

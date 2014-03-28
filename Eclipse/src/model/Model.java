@@ -24,11 +24,16 @@ public class Model {
 		set(0, 0, 6);
 		set(0, 1, 5);
 		set(0, 4, 9);
+		set(0, 6, 7);
+		set(0, 7, 2);
+		set(0, 8, 4);
 		set(1, 0, 4);
 		set(1, 3, 7);
 		set(1, 6, 3);
 		set(2, 0, 3);
+		set(2, 2, 9);
 		set(2, 5, 1);
+		set(2, 8, 6);
 		set(3, 2, 3);
 		set(3, 5, 6);
 		set(3, 6, 5);
@@ -38,12 +43,19 @@ public class Model {
 		set(4, 7, 3);
 		set(5, 1, 9);
 		set(5, 2, 7);
+		set(5, 4, 2);
+		set(5, 5, 4);
 		set(5, 6, 6);
+		set(6, 1, 6);
 		set(6, 3, 4);
+		set(6, 6, 1);
 		set(6, 8, 2);
 		set(7, 2, 2);
 		set(7, 5, 7);
 		set(7, 8, 3);
+		set(8, 0, 8);
+		set(8, 1, 3);
+		set(8, 2, 4);
 		set(8, 4, 1);
 		set(8, 7, 7);
 		set(8, 8, 5);
@@ -104,5 +116,19 @@ public class Model {
 			if(availability[i] == 1) count++;
 		
 		return count;
+	}
+	
+	public void fill(int row, int col){
+		int[] availability = this.getCPAvailable(row, col);
+		if(availability == null) return;
+		
+		int count = 0, index = 0;
+		for(int i = 0; i < n; i++){
+			if(availability[i] == 1){
+				count++;
+				index = i;
+			}
+		}
+		if(count == 1) set(row, col, index + 1);
 	}
 }

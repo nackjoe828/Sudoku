@@ -10,6 +10,7 @@ public class Controller {
 	private int n;
 	private int rowindex;
 	private int colindex;
+	private int flag;
 	
 	public Controller(MainPanel panel, int n){
 		this.panel = panel;
@@ -57,6 +58,7 @@ public class Controller {
 				for(int col = 0; col < n; col++)
 					if((val = model.getAvailableCount(row, col)) >= 0)
 						panel.showCount(row, col, val);
+			flag = 1;
 			break;
 		case CP_CLEAR:
 			val = 0;
@@ -64,6 +66,16 @@ public class Controller {
 				for(int col = 0; col < n; col++)
 					if((val = model.getAvailableCount(row, col)) >= 0)
 						panel.showCount(row, col, -1);
+			flag = 0;
+			break;
+		case CP_FILL:
+			for(int row = 0; row < n; row++)
+				for(int col = 0; col < n; col++)
+					model.fill(row, col);
+			if(flag == 1)
+				handleEvent(ButtonSourceType.CP_ALL);
+			else
+				handleEvent(ButtonSourceType.CP_CLEAR);
 			break;
 		}
 	}

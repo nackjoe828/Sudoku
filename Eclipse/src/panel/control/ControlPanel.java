@@ -1,5 +1,8 @@
 package panel.control;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +23,12 @@ public class ControlPanel extends JPanel{
 		this.controller = controller;
 		cpbPanel = new CPButtonPanel(this);
 		cpFill = new JButton("Fill");
+		cpFill.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				sendEvent(ButtonSourceType.CP_FILL);
+			}
+		});
 		this.layout = new SpringLayout();
 		this.setLayout(layout);
 		
