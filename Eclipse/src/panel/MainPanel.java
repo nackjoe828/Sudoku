@@ -55,6 +55,37 @@ public class MainPanel extends JFrame implements ChangeListener{
 		this.add(control);
 		
 		
+		// initializing grid with some numbers from example.
+		// will be removed after implementing "initialize board" function
+		grid.updateGrid(0, 0, 6);
+		grid.updateGrid(0, 1, 5);
+		grid.updateGrid(0, 4, 9);
+		grid.updateGrid(1, 0, 4);
+		grid.updateGrid(1, 3, 7);
+		grid.updateGrid(1, 6, 3);
+		grid.updateGrid(2, 0, 3);
+		grid.updateGrid(2, 5, 1);
+		grid.updateGrid(3, 2, 3);
+		grid.updateGrid(3, 5, 6);
+		grid.updateGrid(3, 6, 5);
+		grid.updateGrid(3, 7, 4);
+		grid.updateGrid(4, 1, 4);
+		grid.updateGrid(4, 4, 5);
+		grid.updateGrid(4, 7, 3);
+		grid.updateGrid(5, 1, 9);
+		grid.updateGrid(5, 2, 7);
+		grid.updateGrid(5, 6, 6);
+		grid.updateGrid(6, 3, 4);
+		grid.updateGrid(6, 8, 2);
+		grid.updateGrid(7, 2, 2);
+		grid.updateGrid(7, 5, 7);
+		grid.updateGrid(7, 8, 3);
+		grid.updateGrid(8, 4, 1);
+		grid.updateGrid(8, 7, 7);
+		grid.updateGrid(8, 8, 5);
+		
+		
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 	}

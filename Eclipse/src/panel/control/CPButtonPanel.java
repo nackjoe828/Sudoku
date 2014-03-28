@@ -9,11 +9,11 @@ public class CPButtonPanel extends JPanel{
 	public CPButtonPanel(){
 		super();
 		this.setLayout(new GridLayout(1, 3));
+		JButton display = new JButton("All");
 		JButton back = new JButton("<");
 		JButton forward = new JButton(">");
-		JButton fastforward = new JButton(">>");
+		this.add(display);
 		this.add(back);
 		this.add(forward);
-		this.add(fastforward);
 	}
 }
