@@ -7,14 +7,18 @@ import javax.swing.SpringLayout;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
+import controller.Controller;
+
 public class ControlPanel extends JPanel{
 	private CPButtonPanel cpbPanel;
+	private Controller controller;
 	private JButton cpFill;
 	private SpringLayout layout;
 	
-	public ControlPanel(){
+	public ControlPanel(Controller controller){
 		super();
-		cpbPanel = new CPButtonPanel();
+		this.controller = controller;
+		cpbPanel = new CPButtonPanel(this);
 		cpFill = new JButton("Fill");
 		this.layout = new SpringLayout();
 		this.setLayout(layout);
@@ -22,7 +26,7 @@ public class ControlPanel extends JPanel{
 		cpbPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.RAISED), "Constraint Propagation"));
 		layout.putConstraint(layout.NORTH, cpbPanel, 10, layout.NORTH, this);
 		layout.putConstraint(layout.WEST, cpbPanel, 10, layout.WEST, this);
-		layout.putConstraint(layout.SOUTH, cpbPanel, 70, layout.NORTH, cpbPanel);
+		layout.putConstraint(layout.SOUTH, cpbPanel, 150, layout.NORTH, cpbPanel);
 		layout.putConstraint(layout.EAST, cpbPanel, -10, layout.EAST, this);
 		this.add(cpbPanel);
 		
@@ -33,5 +37,7 @@ public class ControlPanel extends JPanel{
 		this.add(cpFill);
 	}
 	
-	
+	public void sendEvent(ButtonSourceType type){
+		controller.handleEvent(type);
+	}
 }

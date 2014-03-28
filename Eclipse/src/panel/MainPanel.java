@@ -9,18 +9,22 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import controller.Controller;
+import model.Model;
 import panel.control.ControlPanel;
 
 
 
-public class MainPanel extends JFrame implements ChangeListener{
+public class MainPanel extends JFrame{
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 700;
+	private static final int N = 9;
 	
 	private GridPanel grid;
 	private MessagePanel message;
 	private ControlPanel control;
 	private SpringLayout layout;
+	private Model model;
 	
 	public MainPanel(){
 		super();
@@ -30,7 +34,7 @@ public class MainPanel extends JFrame implements ChangeListener{
 		layout = new SpringLayout();
 		container.setLayout(layout);
 		
-		grid = new GridPanel(9);
+		grid = new GridPanel(N);
 		grid.setBorder(new EtchedBorder(EtchedBorder.RAISED));
 		layout.putConstraint(layout.NORTH, grid, 10, layout.NORTH, container);
 		layout.putConstraint(layout.WEST, grid, 10, layout.WEST, container);
@@ -46,7 +50,12 @@ public class MainPanel extends JFrame implements ChangeListener{
 		layout.putConstraint(layout.EAST, message, -10, layout.EAST, container);
 		this.add(message);
 		
-		control = new ControlPanel();
+		Controller controller = new Controller(this, N);
+		model = new Model(N, controller);
+		controller.addModel(model);
+		model.initialize();
+		
+		control = new ControlPanel(controller);
 		control.setBorder(new EtchedBorder(EtchedBorder.RAISED));
 		layout.putConstraint(layout.NORTH, control, 10, layout.NORTH, container);
 		layout.putConstraint(layout.WEST, control, 10, layout.EAST, grid);
@@ -54,43 +63,29 @@ public class MainPanel extends JFrame implements ChangeListener{
 		layout.putConstraint(layout.EAST, control, -10, layout.EAST, container);
 		this.add(control);
 		
-		
-		// initializing grid with some numbers from example.
-		// will be removed after implementing "initialize board" function
-		grid.updateGrid(0, 0, 6);
-		grid.updateGrid(0, 1, 5);
-		grid.updateGrid(0, 4, 9);
-		grid.updateGrid(1, 0, 4);
-		grid.updateGrid(1, 3, 7);
-		grid.updateGrid(1, 6, 3);
-		grid.updateGrid(2, 0, 3);
-		grid.updateGrid(2, 5, 1);
-		grid.updateGrid(3, 2, 3);
-		grid.updateGrid(3, 5, 6);
-		grid.updateGrid(3, 6, 5);
-		grid.updateGrid(3, 7, 4);
-		grid.updateGrid(4, 1, 4);
-		grid.updateGrid(4, 4, 5);
-		grid.updateGrid(4, 7, 3);
-		grid.updateGrid(5, 1, 9);
-		grid.updateGrid(5, 2, 7);
-		grid.updateGrid(5, 6, 6);
-		grid.updateGrid(6, 3, 4);
-		grid.updateGrid(6, 8, 2);
-		grid.updateGrid(7, 2, 2);
-		grid.updateGrid(7, 5, 7);
-		grid.updateGrid(7, 8, 3);
-		grid.updateGrid(8, 4, 1);
-		grid.updateGrid(8, 7, 7);
-		grid.updateGrid(8, 8, 5);
-		
-		
+		this.focus(0, 0);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 	}
 	
-	public void stateChanged(ChangeEvent e){
+	public void updateGrid(int row, int col, int val){
+		grid.updateGrid(row, col, val);
+	}
+	
+	public void showMessage(int[] availability){
 		
+	}
+	
+	public void focus(int row, int col){
+		grid.focus(row, col);
+	}
+	
+	public void showCount(int row, int col, int val){
+		grid.show(row, col, val);
+	}
+	
+	public void clear(int row, int col){
+		grid.clear(row, col);
 	}
 }
