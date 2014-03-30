@@ -38,8 +38,12 @@ class GridPanel extends JPanel{
 	}
 	
 	public void updateGrid(int row, int col, int val){
-		buttons[row * n + col].setText("" + val);
+		if(val == 0)
+			buttons[row * n + col].setText("");
+		else
+			buttons[row * n + col].setText("" + val);
 		buttons[row * n + col].setForeground(Color.BLACK);
+		buttons[row * n + col].setBackground(Color.WHITE);
 	}
 	
 	public void focus(int row, int col){
@@ -90,13 +94,18 @@ class GridPanel extends JPanel{
 		if(val == -1){
 			buttons[row * n + col].setText("");
 			buttons[row * n + col].setForeground(Color.BLACK);
+			buttons[row * n + col].setBackground(Color.WHITE);
 		}
 		else{
 			buttons[row * n + col].setText("" + val);
-			if(val == 1)
-				buttons[row * n + col].setForeground(Color.RED);
-			else
-				buttons[row * n + col].setForeground(Color.GREEN);
+			if(val == 1){
+				buttons[row * n + col].setForeground(Color.WHITE);
+				buttons[row * n + col].setBackground(Color.RED);
+			}
+			else{
+				buttons[row * n + col].setForeground(Color.WHITE);
+				buttons[row * n + col].setBackground(Color.BLUE);
+			}
 		}
 	}
 }

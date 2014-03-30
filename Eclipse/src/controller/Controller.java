@@ -67,6 +67,7 @@ public class Controller {
 					if((val = model.getAvailableCount(row, col)) >= 0)
 						panel.showCount(row, col, -1);
 			flag = 0;
+			panel.focus(rowindex, colindex);
 			break;
 		case CP_FILL:
 			for(int row = 0; row < n; row++)
@@ -78,7 +79,7 @@ public class Controller {
 							handleEvent(ButtonSourceType.CP_CLEAR);
 						return;
 					}
-			
+			// model.printcells(); <= used to obtain instructions to fill the complete grid
 			break;
 		}
 	}
