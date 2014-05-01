@@ -79,6 +79,23 @@ public class Controller {
 							handleEvent(ButtonSourceType.CP_CLEAR);
 						return;
 					}
+			
+			//if none filled, start searching
+			for(int row = 0; row < n; row++)
+				for(int col = 0; col < n; col++){
+					if(model.getAvailableCount(row, col) == 2){
+						int[] availableList = model.getCPAvailable(row, col);
+						for(int i = 0; i < n; i++){
+							if(availableList[i] == 1){
+								int[] init = model.getValues();
+								init[n * row + col] = i + 1;
+								MainPanel newPanel = new MainPanel(init);
+							}
+						}
+						return;
+					}
+				}
+			
 			// model.printcells(); <= used to obtain instructions to fill the complete grid
 			break;
 		}

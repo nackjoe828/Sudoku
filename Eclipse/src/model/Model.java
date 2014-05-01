@@ -110,6 +110,19 @@ public class Model {
 		}
 	}
 	
+	public void initialize(int[] init){
+		for(int row = 0; row < n; row++)
+			for(int col = 0; col < n; col++)
+				set(row, col, init[n * row + col]);
+	}
+	
+	public int[] getValues(){
+		int[] ret = new int[values.length];
+		for(int i = 0; i < ret.length; i++)
+			ret[i] = values[i];
+		return ret;
+	}
+	
 	public void set(int row, int col, int val){
 		values[row * n + col] = val;
 		controller.updateGrid(row, col, val);

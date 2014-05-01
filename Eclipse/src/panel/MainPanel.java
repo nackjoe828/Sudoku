@@ -69,6 +69,11 @@ public class MainPanel extends JFrame{
         this.setVisible(true);
 	}
 	
+	public MainPanel(int[] init){
+		this();
+		model.initialize(init);
+	}
+	
 	public void updateGrid(int row, int col, int val){
 		grid.updateGrid(row, col, val);
 	}
